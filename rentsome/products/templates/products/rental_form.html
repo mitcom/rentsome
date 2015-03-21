@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Create article{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+
+<div class="card">
+  {% csrf_token %}
+    <div class="card-header">
+        Rental
+        <span class="tag tag-default tag-pill pull-xs-right">
+            new
+        </span>
+    </div>
+
+    <div class="card-block">
+        <h4 class="card-title">Add new</h4>
+
+        {{ form.non_field_errors }}
+{#        article#}
+        <div class="form-group{% if form.article.errors %} has-danger{% endif %}">
+            <label for="id_article">Article: </label>
+            <input type="text"
+                   name="article"
+                   value="{{ rental.article }}"
+                   id="id_article"
+                   maxlength="255"
+                   class="form-control{% if form.article.errors %} form-control-danger{% endif %}">
+            <small id="rentalArticleHelp" class="form-control-feedback">
+              {% for error in form.article.errors %}
+                {{ error|escape }}
+              {% endfor %}
+            </small>
+        </div>
+{#        rental begin#}
+        <div class="form-group{% if form.begin.errors %} has-danger{% endif %}">
+            <label for="id_begin">Rental begin: </label>
+            <input type="text"
+                   name="begin"
+                   value="{{ rental.begin }}"
+                   id="id_begin"
+                   maxlength="255"
+                   class="form-control{% if form.begin.errors %} form-control-danger{% endif %}">
+            <small id="rentalBeginHelp" class="form-control-feedback">
+              {% for error in form.begin.errors %}
+                {{ error|escape }}
+              {% endfor %}
+            </small>
+        </div>
+{#        rental end#}
+    <div class="form-group{% if form.end.errors %} has-danger{% endif %}">
+            <label for="id_end">Rental end: </label>
+            <input type="text"
+                   name="end"
+                   value="{{ rental.end }}"
+                   id="id_end"
+                   maxlength="255"
+                   class="form-control{% if form.end.errors %} form-control-danger{% endif %}">
+            <small id="rentalEndHelp" class="form-control-feedback">
+              {% for error in form.end.errors %}
+                {{ error|escape }}
+              {% endfor %}
+            </small>
+        </div>
+
+        <button type="submit"
+                class="btn btn-outline-success">
+            Create
+        </button>
+        <a href="{% url 'rentals' %}"
+           class="btn btn-outline-danger pull-xs-right">
+          Cancel
+        </a>
+    </div>
+</div>
+</form>
+{% endblock %}

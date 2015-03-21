@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Create article{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+
+<div class="card">
+  {% csrf_token %}
+    <div class="card-header">
+        Article
+        <span class="tag tag-default tag-pill pull-xs-right">
+            new
+        </span>
+    </div>
+
+    <div class="card-block">
+        <h4 class="card-title">Add new</h4>
+
+        {{ form.non_field_errors }}
+        <div class="form-group{% if form.name.errors %} has-danger{% endif %}">
+            <label for="id_name">Article name: </label>
+            <input type="text"
+                   name="name"
+                   value="{{ article.name }}"
+                   id="id_name"
+                   maxlength="255"
+                   class="form-control{% if form.name.errors %} form-control-danger{% endif %}">
+            <small id="articleNameHelp" class="form-control-feedback">
+              {% for error in form.name.errors %}
+                {{ error|escape }}
+              {% endfor %}
+            </small>
+        </div>
+
+        <button type="submit"
+                class="btn btn-outline-success">
+            Create
+        </button>
+        <a href="{% url 'articles' %}"
+           class="btn btn-outline-danger pull-xs-right">
+          Cancel
+        </a>
+    </div>
+</div>
+</form>
+{% endblock %}
