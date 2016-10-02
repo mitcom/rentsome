@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles list{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Articles
+        <span class="tag tag-default tag-pill pull-xs-right">
+            {{ articles.count }}
+        </span>
+    </div>
+    <div class="card-block">
+        <a href="{% url 'new-article' %}" class="btn btn-outline-success">
+            Create new article
+        </a>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for article in article_list %}
+            <tr>
+                <th>
+                    <a href="{% url 'article' article.id %}">
+                        {{ article.id }}
+                    </a>
+                </th>
+                <td>
+                    <a href="{% url 'article' article.id %}">{{ article }}</a>
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

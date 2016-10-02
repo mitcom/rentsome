@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles list{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Rental
+        <span class="tag tag-default tag-pill pull-xs-right">
+            {{ rental.id }}.
+        </span>
+    </div>
+    <div class="card-block">
+        <h4 class="card-title">{{ rental }}</h4>
+            <dl>
+                <dt>id: </dt>
+                <dd>{{ rental.id }}</dd>
+                <dt>article: </dt>
+                <dd>{{ rental.article }}</dd>
+                <dt>begin: </dt>
+                <dd>{{ rental.begin }}</dd>
+                <dt>end: </dt>
+                <dd>{{ rental.end }}</dd>
+            </dl>
+        <a href="{% url 'rentals' %}" class="btn btn-outline-primary">Back</a>
+        <button class="btn btn-outline-danger pull-xs-right" disabled>
+            Delete
+        </button>
+    </div>
+</div>
+{% endblock %}

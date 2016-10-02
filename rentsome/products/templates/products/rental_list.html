@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Rentals list{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Rentals
+        <span class="tag tag-default tag-pill pull-xs-right">
+            {{ rentals.count }}
+        </span>
+    </div>
+    <div class="card-block">
+        <a href="{% url 'new-rental' %}" class="card-link">
+            Create new rental
+        </a>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Article</th>
+                <th>Begin</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for rental in rental_list %}
+            <tr>
+                <th>
+                    <a href="{% url 'rental' rental.id %}">{{ rental.id }}</a>
+                </th>
+                <td>
+                    <a href="{% url 'rental' rental.id %}">
+                        {{ rental.article }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'rental' rental.id %}">
+                        {{ rental.begin }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'rental' rental.id %}">
+                        {{ rental.end }}
+                    </a>
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
