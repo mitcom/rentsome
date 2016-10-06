@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Products list{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Products
+            <span class="tag tag-default tag-pill pull-xs-right">
+            {{ products.count }}
+        </span>
+        </div>
+        <div class="card-block">
+            <a href="{% url 'new-product' %}" class="btn btn-outline-success">
+                Create new product
+            </a>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in product_list %}
+                <tr>
+                    <th>
+                        <a href="{% url 'product' product.id %}">
+                            {{ product.id }}
+                        </a>
+                    </th>
+                    <td>
+                        <a href="{% url 'product' product.id %}">{{ product }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

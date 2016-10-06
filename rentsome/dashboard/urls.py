@@ -7,6 +7,19 @@ urlpatterns = [
     # ex: /dashboard/
     url(r'^$', product_views.index),
 
+    # ex: /dashboard/product/
+    url(r'^product/$', product_views.product_list, name='products'),
+
+    # ex: /dashboard/product/new
+    url(r'^product/new/$', product_views.product_create, name='new-product'),
+
+    # ex: /dashboard/product/3/
+    url(
+        r'^product/(?P<pk>[0-9]+)/$',
+        product_views.product_detail,
+        name='product',
+    ),
+
     # ex: /dashboard/article/
     url(r'^article/$', product_views.article_list, name='articles'),
 

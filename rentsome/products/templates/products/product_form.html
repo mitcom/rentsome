@@ -8,7 +8,7 @@
         <div class="card">
             {% csrf_token %}
             <div class="card-header">
-                Article
+                Product
                 <span class="tag tag-default tag-pill pull-xs-right">
             new
         </span>
@@ -17,12 +17,13 @@
             <div class="card-block">
                 <h4 class="card-title">Add new</h4>
 
+                {{ form.non_field_errors }}
                 {{ form }}
 {#                <div class="form-group{% if form.name.errors %} has-danger{% endif %}">#}
 {#                    <label for="id_name">Article name: </label>#}
 {#                    <input type="text"#}
 {#                           name="name"#}
-{#                           value="{{ article.name }}"#}
+{#                           value="{{ product.name }}"#}
 {#                           id="id_name"#}
 {#                           maxlength="255"#}
 {#                           class="form-control{% if form.name.errors %} form-control-danger{% endif %}">#}
@@ -36,7 +37,7 @@
                 <button type="submit" class="btn btn-outline-success">
                     Create
                 </button>
-                <a href="{% url 'articles' %}" class="btn btn-outline-danger pull-xs-right">
+                <a href="{% url 'products' %}" class="btn btn-outline-danger pull-xs-right">
                     Cancel
                 </a>
             </div>

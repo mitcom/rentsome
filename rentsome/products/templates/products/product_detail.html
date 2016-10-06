@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Products list{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Product
+            <span class="tag tag-default tag-pill pull-xs-right">
+            {{ product.id }}.
+        </span>
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{ product }}</h4>
+            <dl>
+                <dt>id:</dt>
+                <dd>{{ product.id }}</dd>
+                <dt>name:</dt>
+                <dd>{{ product.name }}</dd>
+                <dt>manufacturer:</dt>
+                <dd>{{ product.manufacturer }}</dd>
+            </dl>
+            <a href="{% url 'products' %}" class="btn btn-outline-primary">Back</a>
+            <button class="btn btn-outline-danger pull-xs-right" disabled>
+                Delete
+            </button>
+        </div>
+    </div>
+{% endblock %}
