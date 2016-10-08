@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 docker run \
     --name rentsome-postgres \
     -e POSTGRES_PASSWORD=mysecretpassword \

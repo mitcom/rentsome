@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 docker rm -f rentsome-postgres
 docker run \
     --name rentsome-postgres \
